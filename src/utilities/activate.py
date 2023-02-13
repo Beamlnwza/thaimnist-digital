@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-venv_path = os.path.join(os.getcwd(), '.venv', 'Scripts', 'activate')
+venv_path = os.path.join(os.getcwd(), ".venv", "Scripts", "activate")
 
 subprocess.run(f"source {venv_path}", shell=True)
 
