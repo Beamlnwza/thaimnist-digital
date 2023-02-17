@@ -20,14 +20,6 @@ alphabets = [str(x) for x in alphabet]
 # Random brush size
 brush_size = 2
 
-def convert_to_thai_alphabet(num):
-    if num < 0 or num > 43:
-        return "Invalid number"
-
-    thai_alphabets = "กขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรฤลฦวศษสหฮ"
-    return thai_alphabets[num]
-
-
 # Function to handle mouse events
 def draw_circle(event, x, y, flags, param):
     global prev_x, prev_y
