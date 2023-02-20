@@ -10,7 +10,7 @@ dimision = random.randint(50, 100)
 img_size = (dimision, dimision)
 
 # Define the list of alphabets to be drawn
-alphabet_range = 2
+alphabet_range = 44
 --alphabet_range
 alphabet = list(range(0, alphabet_range))
 alphabets = [str(x) for x in alphabet]
@@ -18,6 +18,7 @@ alphabets = [str(x) for x in alphabet]
 
 # Random brush size
 brush_size = 2
+
 
 # Function to handle mouse events
 def draw_circle(event, x, y, flags, param):
@@ -27,6 +28,21 @@ def draw_circle(event, x, y, flags, param):
     elif event == cv2.EVENT_MOUSEMOVE and flags & cv2.EVENT_FLAG_LBUTTON:
         cv2.line(img, (prev_x, prev_y), (x, y), (0, 0, 0), brush_size)
         prev_x, prev_y = x, y
+
+
+def pos_ladder(alphabet):
+    if alphabet > 39:
+        return 10
+    elif alphabet > 31:
+        return 55
+    elif alphabet > 23:
+        return 100
+    elif alphabet > 15:
+        return 145
+    elif alphabet > 7:
+        return 190
+    else:
+        return 0
 
 
 # Loop through the list of alphabets
@@ -54,20 +70,23 @@ for alphabet in alphabets:
     )
 
     cv2.namedWindow(alphabet, cv2.WINDOW_GUI_EXPANDED)
-    cv2.resizeWindow(alphabet, 600, 600)
+    cv2.resizeWindow(alphabet, 800, 800)
     cv2.setWindowTitle(alphabet, window_text)
 
     # Bind the function to the window
     cv2.setMouseCallback(alphabet, draw_circle)
-    
-    thai = (os.path.join(os.getcwd(), "src", "handdraw", "THAlphabets.jpg"))
+
+    thai = os.path.join(os.getcwd(), "src", "handdraw", "THAlphabets.jpg")
     img_alpha = cv2.imread(thai)
+
+    rectangle_pos = (10 * int(alphabet), pos_ladder(int(alphabet)))
+    cv2.rectangle(img_alpha, rectangle_pos, (45, 45), (255, 0, 0), 2)
 
     # Loop until user presses 'q'
     while True:
         cv2.imshow("Thai", img_alpha)
         cv2.imshow(alphabet, img)
-        cv2.moveWindow(alphabet, 450, 100)
+        cv2.moveWindow(alphabet, 450, 75)
         if cv2.waitKey(20) & 0xFF == ord("q"):
             break
 
@@ -85,3 +104,4 @@ for alphabet in alphabets:
 
     # Destroy the window
     cv2.destroyAllWindows()
+    
