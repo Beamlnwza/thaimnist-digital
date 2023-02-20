@@ -3,7 +3,6 @@ import numpy as np
 import os
 import random
 
-
 store_unit = os.path.join(os.getcwd(), "data", "raw")
 
 # Define the size of the image
@@ -11,7 +10,7 @@ dimision = random.randint(50, 100)
 img_size = (dimision, dimision)
 
 # Define the list of alphabets to be drawn
-alphabet_range = 44
+alphabet_range = 2
 --alphabet_range
 alphabet = list(range(0, alphabet_range))
 alphabets = [str(x) for x in alphabet]
@@ -54,7 +53,7 @@ for alphabet in alphabets:
         + str(brush_size)
     )
 
-    cv2.namedWindow(alphabet, cv2.WINDOW_NORMAL)
+    cv2.namedWindow(alphabet, cv2.WINDOW_GUI_EXPANDED)
     cv2.resizeWindow(alphabet, 600, 600)
     cv2.setWindowTitle(alphabet, window_text)
 
@@ -68,6 +67,7 @@ for alphabet in alphabets:
     while True:
         cv2.imshow("Thai", img_alpha)
         cv2.imshow(alphabet, img)
+        cv2.moveWindow(alphabet, 450, 100)
         if cv2.waitKey(20) & 0xFF == ord("q"):
             break
 
