@@ -10,7 +10,7 @@ dimision = random.randint(50, 100)
 img_size = (dimision, dimision)
 
 # Define the list of alphabets to be drawn
-alphabet_range = 44
+alphabet_range = 16
 --alphabet_range
 alphabet = list(range(0, alphabet_range))
 alphabets = [str(x) for x in alphabet]
@@ -30,19 +30,33 @@ def draw_circle(event, x, y, flags, param):
         prev_x, prev_y = x, y
 
 
-def pos_ladder(alphabet):
-    if alphabet > 39:
-        return 10
-    elif alphabet > 31:
-        return 55
-    elif alphabet > 23:
-        return 100
-    elif alphabet > 15:
-        return 145
-    elif alphabet > 7:
-        return 190
-    else:
+rec_size = 42
+
+
+def pos_ledder(nums):
+    if nums < 8:
         return 0
+    elif nums < 16:
+        return 1
+    elif nums < 24:
+        return 2
+    elif nums < 32:
+        return 3
+    elif nums < 40:
+        return 4
+    else :
+        return 5
+
+
+def startpoints(nums):
+    x = nums % 8 * rec_size
+    y = rec_size * pos_ledder(nums)
+
+    return (x, y)
+
+
+def endpoints(nums):
+    return ((nums % 8) + 1) * rec_size, rec_size * (pos_ledder(nums) + 1)
 
 
 # Loop through the list of alphabets
@@ -79,8 +93,9 @@ for alphabet in alphabets:
     thai = os.path.join(os.getcwd(), "src", "handdraw", "THAlphabets.jpg")
     img_alpha = cv2.imread(thai)
 
-    rectangle_pos = (10 * int(alphabet), pos_ladder(int(alphabet)))
-    cv2.rectangle(img_alpha, rectangle_pos, (45, 45), (255, 0, 0), 2)
+    cv2.rectangle(
+        img_alpha, startpoints(int(alphabet)), endpoints(int(alphabet)), (0, 0, 255), 3
+    )
 
     # Loop until user presses 'q'
     while True:
@@ -104,4 +119,3 @@ for alphabet in alphabets:
 
     # Destroy the window
     cv2.destroyAllWindows()
-    
