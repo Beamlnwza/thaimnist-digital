@@ -10,7 +10,7 @@ dimision = random.randint(50, 100)
 img_size = (dimision, dimision)
 
 # Define the list of alphabets to be drawn
-alphabet_range = 16
+alphabet_range = 44
 --alphabet_range
 alphabet = list(range(0, alphabet_range))
 alphabets = [str(x) for x in alphabet]
@@ -33,30 +33,15 @@ def draw_circle(event, x, y, flags, param):
 rec_size = 42
 
 
-def pos_ledder(nums):
-    if nums < 8:
-        return 0
-    elif nums < 16:
-        return 1
-    elif nums < 24:
-        return 2
-    elif nums < 32:
-        return 3
-    elif nums < 40:
-        return 4
-    else :
-        return 5
-
-
 def startpoints(nums):
     x = nums % 8 * rec_size
-    y = rec_size * pos_ledder(nums)
+    y = rec_size * (nums // 8)
 
     return (x, y)
 
 
 def endpoints(nums):
-    return ((nums % 8) + 1) * rec_size, rec_size * (pos_ledder(nums) + 1)
+    return ((nums % 8) + 1) * rec_size, rec_size * ((nums // 8) + 1)
 
 
 # Loop through the list of alphabets
