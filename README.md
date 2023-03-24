@@ -1,4 +1,4 @@
-# ALKSORN
+# THAI-MNIST 
 
 dataset for the Thai alphabet that follows MNIST style
 
