@@ -19,7 +19,7 @@ MNIST is well known for beginning and measuring classification problems. As a Th
 
 ## Roadmaps!
 
--   Make each class 220 students, for a total of about 10,000 data. or more in future.
+-   Make each class 220 picture, for a total of about 10,000 data. or more in future.
 -   Make more Ages range
 -   resolving all data set problems
 

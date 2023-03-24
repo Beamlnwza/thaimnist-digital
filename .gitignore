@@ -1,2 +1,4 @@
 #gitignore for venv
 .venv
+
+/docs
