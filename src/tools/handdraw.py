@@ -167,6 +167,9 @@ class Handdraw:
 
         return img_example
 
+    def test(self):
+        print("test")
+
 
 if __name__ == "__main__":
     handdraw = Handdraw(dimension=50)
