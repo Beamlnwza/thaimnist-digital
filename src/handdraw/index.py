@@ -82,7 +82,11 @@ if __name__ == "__main__":
         img_alpha = cv2.imread(thai)
 
         cv2.rectangle(
-            img_alpha, startpoints(int(alphabet)), endpoints(int(alphabet)), (0, 0, 255), 3
+            img_alpha,
+            startpoints(int(alphabet)),
+            endpoints(int(alphabet)),
+            (0, 0, 255),
+            3,
         )
 
         # Loop until user presses 'q'
@@ -90,13 +94,12 @@ if __name__ == "__main__":
             cv2.imshow("Thai", img_alpha)
             cv2.imshow(alphabet, img)
             cv2.moveWindow(alphabet, 450, 75)
-            
+
             if cv2.waitKey(20) & 0xFF == ord("r"):
                 img = 255 * np.ones(img_size + (3,), dtype=np.uint8)
-            
+
             if cv2.waitKey(20) & 0xFF == ord("q"):
                 break
-            
 
         # Check if the directory for the alphabet exists, and create it if it doesn't
         if not os.path.exists(path):
